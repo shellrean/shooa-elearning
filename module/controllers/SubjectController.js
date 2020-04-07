@@ -34,6 +34,45 @@ class SubjectController
 			res.json({ message: 'Server error' }).status(500);
 		}
 	}
+
+	/**
+	 *
+	 */
+	async show(req, res)
+	{
+		try {
+			let subject = await Subject.findById(req.params.id);
+			res.json({ data: subject });
+		} catch (err) {
+			res.json({ message: 'Server error' }).status(500);
+		}
+	}
+
+	/**
+	 *
+	 */
+	async update(req, res)
+	{
+		try {
+			await Subject.findByIdAndUpdate(req.params.id, req.body);
+			res.json({ message: 'subject updated' });
+		} catch (err) {
+			res.json({ message: 'Server error' }).status(500);
+		}
+	}
+
+	/**
+	 *
+	 */
+	async destroy(req, res)
+	{
+		try {
+			await Subject.findByIdAndRemove(req.params.id);
+			res.json({ message: 'subject removed' });
+		} catch (err) {
+			res.json({ message: 'Server error' }).status(500);
+		}
+	}
 }
 
 module.exports = new SubjectController();

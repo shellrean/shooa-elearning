@@ -53,7 +53,7 @@ class UserController
 				payload,
 				"secret",
 				{
-					expiresIn: 3600
+					expiresIn: 7200
 				},
 				(err, token) => {
 					if (err) throw err;

@@ -16,5 +16,8 @@ const ClassroomController = require('../../controllers/ClassroomController');
  */
 router.get('/', Auth.isAuthenticated, ClassroomController.index);
 router.post('/', Auth.isAuthenticated, ClassroomController.store);
+router.get('/:id', Auth.isAuthenticated, ClassroomController.show);
+router.patch('/:id', Auth.isAuthenticated, ClassroomController.update);
+router.delete('/:id', Auth.isAuthenticated, ClassroomController.destroy);
 
 module.exports = router;

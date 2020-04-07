@@ -19,7 +19,7 @@ class ClassroomController
 
 			res.json({ data: classrooms });	
 		} catch (err) {
-			res.json({ message: err.message }).status(500);
+			res.json({ message: 'Server error' }).status(500);
 		}
 	}
 
@@ -34,32 +34,51 @@ class ClassroomController
 
 			res.json({ message: 'Classroom created' });
 		} catch (err) {
-			res.json({ message: err.message }).status(500);
+			res.json({ message: 'Server error' }).status(500);
 		}
 	}
 
 	/**
 	 *
 	 */
-	async show()
+	async show(req, res)
 	{
+		try {		
+			const classroom = await Classroom.findById(req.params.id)
+			.populate('_major _subjects').exec();
 
+			res.json({ data: classroom });
+		} catch (err) {
+			res.json({ message: 'Server error'}).status(500);
+		}
 	}
 
 	/**
 	 *
 	 */
-	async update()
+	async update(req, res)
 	{
+		try {
+			await Classroom.findByIdAndUpdate(req.params.id, req.body);
 
+			res.json({ message: 'Classroom updated' });
+		} catch (err) {
+			res.json({ message: 'Server error:'+err.message }).status(500);
+		}
 	}
 
 	/**
 	 *
 	 */
-	async destory()
+	async destroy(req, res)
 	{
+		try {
+			await Classroom.findByIdAndRemove(req.params.id);
 
+			res.json({ message: 'Classroom deleted' });
+		} catch (err) {
+			res.json({ message: 'Server error' }).status(500);
+		}
 	}
 }
 
