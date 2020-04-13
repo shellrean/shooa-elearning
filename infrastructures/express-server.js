@@ -4,6 +4,7 @@
  */
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 
@@ -19,6 +20,7 @@ class ExpressServer {
 	// start() is the starting poin of the web server
 	start() {
 		app.use(bodyParser.json());
+		app.use(cors());
 		app.get('/', (req, res) => {
 			res.type('application/json');
 

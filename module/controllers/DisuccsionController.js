@@ -1,4 +1,4 @@
-const Discussion = require('../model/Discussion');
+const Discussion = require('../models/Discussion');
 
 class DisuccsionController
 {

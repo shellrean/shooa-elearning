@@ -1,2 +1,11 @@
-Shellrean
-i want to change my coding style to organize my skills
+# Shooa Learning Management System
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run dev
+```

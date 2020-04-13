@@ -31,15 +31,15 @@ class UserController
 				email
 			});
 			if (!user) {
-				return res.status(401).json({
-					message: 'User not found'
+				return res.json({
+					status: 'error'
 				});
 			}
 
 			const isMatch = await bcrypt.compare(password, user.password);
 			if (!isMatch) {
-				return res.status(401).json({
-					message: "incorrect password"
+				return res.json({
+					status: 'error'
 				});
 			}
 
@@ -57,7 +57,7 @@ class UserController
 				},
 				(err, token) => {
 					if (err) throw err;
-					res.json({ token });
+					res.json({ status: 'success', token });
 				}
 			);
 		} catch (e) {
