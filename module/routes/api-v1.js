@@ -6,6 +6,7 @@ const app = express();
  */
 app.use('/user', require('./v1/user'));
 app.use('/subject', require('./v1/subject'));
+app.use('/major', require('./v1/major'));
 app.use('/classroom', require('./v1/classroom'));
 app.use('/matter', require('./v1/matter'));
 app.use('/discussion', require('./v1/discussion'));

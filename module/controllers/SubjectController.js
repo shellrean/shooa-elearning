@@ -16,7 +16,7 @@ class SubjectController
 
 			res.json({ data : subjects });
 		} catch (err) {
-			res.json({ message: 'Server error' }).status(500);
+			res.status(500).json({ message: 'Server error' });
 		}
 	}
 
@@ -31,7 +31,7 @@ class SubjectController
 			
 			res.json({ message: 'subject created'});
 		} catch (err) {
-			res.json({ message: 'Server error' }).status(500);
+			res.status(500).json({ message: 'Server error' });
 		}
 	}
 
@@ -44,7 +44,7 @@ class SubjectController
 			let subject = await Subject.findById(req.params.id);
 			res.json({ data: subject });
 		} catch (err) {
-			res.json({ message: 'Server error' }).status(500);
+			res.status(500).json({ message: 'Server error' });
 		}
 	}
 
@@ -57,7 +57,7 @@ class SubjectController
 			await Subject.findByIdAndUpdate(req.params.id, req.body);
 			res.json({ message: 'subject updated' });
 		} catch (err) {
-			res.json({ message: 'Server error' }).status(500);
+			res.status(500).json({ message: 'Server error' });
 		}
 	}
 
@@ -70,7 +70,7 @@ class SubjectController
 			await Subject.findByIdAndRemove(req.params.id);
 			res.json({ message: 'subject removed' });
 		} catch (err) {
-			res.json({ message: 'Server error' }).status(500);
+			res.status(500).json({ message: 'Server error' });
 		}
 	}
 }

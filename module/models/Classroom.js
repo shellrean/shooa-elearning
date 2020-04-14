@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const major = require("./Major");
-
 const ClassroomSchema = new Schema({
 	name: {
 		type: String,

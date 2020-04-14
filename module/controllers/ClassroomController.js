@@ -13,13 +13,13 @@ class ClassroomController
 				selector.name = {$regex : new RegExp(".*" + req.query.name + ".*", "i") }
 			}
 			const classrooms = await Classroom.find(selector)
-			.select('_id, name')
+			.select('_id, name grade')
 			.populate('_major _subjects')
 			.exec();
 
 			res.json({ data: classrooms });	
 		} catch (err) {
-			res.json({ message: 'Server error' }).status(500);
+			res.status(500).json({ message: 'Server error' });
 		}
 	}
 
@@ -34,7 +34,7 @@ class ClassroomController
 
 			res.json({ message: 'Classroom created' });
 		} catch (err) {
-			res.json({ message: 'Server error' }).status(500);
+			res.status(500).json({ message: 'Server error '+err.message});
 		}
 	}
 
@@ -49,7 +49,7 @@ class ClassroomController
 
 			res.json({ data: classroom });
 		} catch (err) {
-			res.json({ message: 'Server error'}).status(500);
+			res.status(500).json({ message: 'Server error' +err.message});
 		}
 	}
 
@@ -63,7 +63,7 @@ class ClassroomController
 
 			res.json({ message: 'Classroom updated' });
 		} catch (err) {
-			res.json({ message: 'Server error:'+err.message }).status(500);
+			res.status(500).json({ message: 'Server error:'+err.message });
 		}
 	}
 
@@ -77,7 +77,7 @@ class ClassroomController
 
 			res.json({ message: 'Classroom deleted' });
 		} catch (err) {
-			res.json({ message: 'Server error' }).status(500);
+			res.status(500).json({ message: 'Server error' });
 		}
 	}
 }

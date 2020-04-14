@@ -53,7 +53,7 @@ class UserController
 				payload,
 				"secret",
 				{
-					expiresIn: 7200
+					expiresIn: 72000
 				},
 				(err, token) => {
 					if (err) throw err;
@@ -61,7 +61,7 @@ class UserController
 				}
 			);
 		} catch (e) {
-			res.json({ messsage: 'Server error' });
+			res.json({ messsage: 'Server error' }).status(500);
 		}
 	}
 

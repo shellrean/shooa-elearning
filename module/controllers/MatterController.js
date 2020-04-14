@@ -29,7 +29,7 @@ class MatterController
 
 			res.json({ data: matters });
 		} catch (err) {
-			res.json({ message: 'Server error' +err.message }).status(500);
+			res.status(500).json({ message: 'Server error' +err.message });
 		}
 	}
 
@@ -44,7 +44,7 @@ class MatterController
 
 			res.json({message: 'matter created' });
 		} catch (err) {
-			res.json({ message: 'Server error'+ err.message }).status(500);
+			res.status(500).json({ message: 'Server error'+ err.message });
 		}
 	}
 
@@ -70,7 +70,7 @@ class MatterController
 
 			res.json({ data: matter });
 		} catch (err) {
-			res.json({ message: 'Server error' +err.message }).status(500);
+			res.status(500).json({ message: 'Server error' +err.message });
 		}
 	}
 
@@ -84,7 +84,7 @@ class MatterController
 
 			res.json({message: 'matter updated' });
 		} catch (err) {
-			res.json({ message: 'Server error' + err.message }).status(500);
+			res.status(500).json({ message: 'Server error' + err.message });
 		}
 	}
 
@@ -98,7 +98,7 @@ class MatterController
 
 			res.json({ message: 'mater deleted' });
 		} catch (err) {
-			res.json({ message: 'Server error' + err.message }).status(500);
+			res.status(500).json({ message: 'Server error' + err.message });
 		}
 	}
 }
